@@ -1,10 +1,12 @@
 //
 //  ProductListViewModel.swift
-//  CombineFramework
+//  02_APICall_MVVM
 //
-//  Created by Neosoft on 07/11/23.
+//  Created by webwerks  on 07/11/23.
 //
+
 import Foundation
+import Combine
 
 class ProductListViewModel: ObservableObject {
     
@@ -13,44 +15,36 @@ class ProductListViewModel: ObservableObject {
     @Published var backendMessage = ""
     @Published var isNavigating = false
     
-    func getDataFromViewModel(completion: @escaping (ProductListResponse?, ProductListInvalidCategoryId?, ProductListDataMissing?, ProductListWrongMethod?, Error?) -> (Void)) {
-        
-        ProductListingService.productList() {
-            (success, invalidategoryId, dataMissing, wrongMethod, error) in
-            if let value = success {
-                completion(value, nil, nil, nil, nil)
-                DispatchQueue.main.async {
-                    self.products += value.data ?? []
+    private var cancellables = Set<AnyCancellable>()
+    
+    func getDataFromViewModel() {
+        ProductListingService.productList()
+            .sink(receiveCompletion: { [weak self] completion in
+                guard let self = self else { return }
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.isPresentingAlert = true
+                    self.backendMessage = error.localizedDescription
+                }
+            }, receiveValue: { [weak self] (productList, invalidCategoryId, dataMissing, wrongMethod) in
+                guard let self = self else { return }
+                if let productList = productList {
+                    self.products = productList.data ?? []
                     self.isPresentingAlert = false
-                }
-            }
-            else if let data = invalidategoryId {
-                completion(nil, data, nil, nil, nil)
-                DispatchQueue.main.async {
+                    self.isNavigating = true
+                } else if let invalidCategoryId = invalidCategoryId {
                     self.isPresentingAlert = true
-                    self.backendMessage = data.user_msg ?? ""
-                }
-            }
-            else if let data = dataMissing {
-                completion(nil, nil, data, nil, nil)
-                DispatchQueue.main.async {
+                    self.backendMessage = invalidCategoryId.user_msg ?? ""
+                } else if let dataMissing = dataMissing {
                     self.isPresentingAlert = true
-                    self.backendMessage = data.user_msg ?? ""
-                }
-            }
-            else if let data = wrongMethod {
-                completion(nil, nil, nil, data, nil)
-                DispatchQueue.main.async {
+                    self.backendMessage = dataMissing.user_msg ?? ""
+                } else if let wrongMethod = wrongMethod {
                     self.isPresentingAlert = true
-                    self.backendMessage = data.user_msg ?? ""
+                    self.backendMessage = wrongMethod.user_msg ?? ""
                 }
-            }
-            else {
-                completion(nil, nil, nil, nil, error)
-                DispatchQueue.main.async {
-                    self.isPresentingAlert = true
-                }
-            }
-        }
+            })
+            .store(in: &cancellables)
     }
 }

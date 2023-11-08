@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Combine
+
 struct ContentView: View {
     
     @ObservedObject var viewModel = ProductListViewModel()
@@ -13,31 +15,20 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-//                NavigationLink(destination: ProductListView(), isActive: $viewModel.isNavigating) {
+                NavigationLink(destination: ProductListView(), isActive: $viewModel.isNavigating) {
                     Button(action: {
-                        viewModel.getDataFromViewModel() {
-                            (success, invalidId, dataMissing, wrongMethod, error) in
-                            if success != nil {
-                                DispatchQueue.main.async {
-                                    viewModel.isNavigating = true
-                                }
-                            }
-                            else {
-                            }
-                        }
+                    viewModel.getDataFromViewModel()
                     }) {
                         Text("API CALL")
                             .foregroundColor(Color.pink)
+                            .padding(15)
+                            .background(.black)
                             .font(.system(size: 20))
                             .fontWeight(.bold)
-                            .padding(10)
-                            .frame(width: 130)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.black, lineWidth: 2)
-                            )
+                            .cornerRadius(10)
                     }
                 }
+                .navigationTitle("Future API Call")
                 .padding()
                 
                 PublisherSubscriberView()

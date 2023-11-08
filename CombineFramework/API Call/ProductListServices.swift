@@ -1,46 +1,37 @@
 //
-//  ProductListServices.swift
-//  CombineFramework
+//  ProductListingService.swift
+//  02_APICall_MVVM
 //
-//  Created by Neosoft on 07/11/23.
+//  Created by webwerks  on 07/11/23.
 //
 
 import Foundation
+import Combine
 
 class ProductListingService {
     
-    static func productList(completion: @escaping (ProductListResponse?, ProductListInvalidCategoryId?, ProductListDataMissing?, ProductListWrongMethod?, Error?) -> (Void)) {
+    static func productList() -> AnyPublisher<(ProductListResponse?, ProductListInvalidCategoryId?, ProductListDataMissing?, ProductListWrongMethod?), Error> {
         
-        APIManager.sharedInstance.makeApiCall(serviceType: .getProductList) {
-            response in
-            switch response {
-            case .success(let value):
-                if let content = value as? Data {
-                    do {
-                        let responseData = try JSONDecoder().decode(ProductListResponse.self, from: content)
-                        if responseData.status == 200 {
-                            completion(responseData, nil, nil, nil, nil)
-                        }
-                        else if responseData.status == 401 {
-                            let invalidData = try JSONDecoder().decode(ProductListInvalidCategoryId.self, from: content)
-                            completion(nil, invalidData, nil, nil, nil)
-                        }
-                        else if responseData.status == 400 {
-                            let dataMissing = try JSONDecoder().decode(ProductListDataMissing.self, from: content)
-                            completion(nil, nil, dataMissing, nil, nil)
-                        }
-                        else {
-                            let wrongMethod = try JSONDecoder().decode(ProductListWrongMethod.self, from: content)
-                            completion(nil, nil, nil, wrongMethod, nil)
-                        }
+        return APIManager.sharedInstance.makeApiCall(serviceType: .getProductList)
+            .tryMap { data in
+                do {
+                    let responseData = try JSONDecoder().decode(ProductListResponse.self, from: data)
+                    if responseData.status == 200 {
+                        return (responseData, nil, nil, nil)
+                    } else if responseData.status == 401 {
+                        let invalidData = try JSONDecoder().decode(ProductListInvalidCategoryId.self, from: data)
+                        return (nil, invalidData, nil, nil)
+                    } else if responseData.status == 400 {
+                        let dataMissing = try JSONDecoder().decode(ProductListDataMissing.self, from: data)
+                        return (nil, nil, dataMissing, nil)
+                    } else {
+                        let wrongMethod = try JSONDecoder().decode(ProductListWrongMethod.self, from: data)
+                        return (nil, nil, nil, wrongMethod)
                     }
-                    catch {
-                        completion(nil, nil, nil, nil, value as? Error)
-                    }
+                } catch {
+                    throw error
                 }
-            case .failure(let error):
-                completion(nil, nil, nil, nil, error)
             }
-        }
+            .eraseToAnyPublisher()
     }
 }

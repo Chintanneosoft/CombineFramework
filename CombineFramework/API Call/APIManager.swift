@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import Combine
 
 class APIManager: NSObject {
     
     static let sharedInstance = APIManager()
     private override init() {}
     
-    func makeApiCall(serviceType: APIServices, completion: @escaping (Result<Any, Error>) -> (Void)) {
+    func makeApiCall(serviceType: APIServices) -> (AnyPublisher<Data, Error>) {
         
         let session = URLSession.shared
         
@@ -40,26 +41,29 @@ class APIManager: NSObject {
         }
         urlRequest.allHTTPHeaderFields = serviceType.header
         
-        let task = session.dataTask(with: urlRequest) {
-            data, response, error in
+        return Future { promise in
             
-            guard error == nil else {
-                completion(.failure(error!))
-                return
+            let task = session.dataTask(with: urlRequest) {
+                data, response, error in
+                
+                guard error == nil else {
+                    promise(.failure(error!))
+                    return
+                }
+                
+                guard let content = data else {
+                    promise(.failure(error!))
+                    return
+                }
+                guard (try? JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers)) as? stringAnyDict != nil else {
+                    promise(.failure(error!))
+                    return
+                }
+                promise(.success(content))
             }
-            
-            guard let content = data else {
-                completion(.failure(error!))
-                return
-            }
-            guard (try? JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers)) as? stringAnyDict != nil else {
-                completion(.failure(error!))
-                return
-            }
-            completion(.success(content))
+            task.resume()
         }
-        
-        task.resume()
+        .receive(on: DispatchQueue.main)
+        .eraseToAnyPublisher()
     }
 }
-

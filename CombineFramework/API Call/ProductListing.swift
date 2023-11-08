@@ -44,7 +44,7 @@ struct ProductListDetails : Codable, Hashable {
     let view_count : Int?
     let created : String?
     let modified : String?
-    let product_images : String?
+    var product_images : String?
     
     enum CodingKeys: String, CodingKey {
         case id = "id"

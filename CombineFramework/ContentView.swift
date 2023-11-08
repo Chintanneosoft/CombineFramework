@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: ProductListView(), isActive: $viewModel.isNavigating) {
+//                NavigationLink(destination: ProductListView(), isActive: $viewModel.isNavigating) {
                     Button(action: {
                         viewModel.getDataFromViewModel() {
                             (success, invalidId, dataMissing, wrongMethod, error) in

@@ -11,6 +11,13 @@
 		9295DED42AFA1780002F6ECA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DED32AFA1780002F6ECA /* ContentView.swift */; };
 		9295DED62AFA1785002F6ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9295DED52AFA1785002F6ECA /* Assets.xcassets */; };
 		9295DED92AFA1785002F6ECA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9295DED82AFA1785002F6ECA /* Preview Assets.xcassets */; };
+		9295DEE02AFA17B3002F6ECA /* PublisherSubscriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DEDF2AFA17B3002F6ECA /* PublisherSubscriber.swift */; };
+		9295DEE92AFA57FD002F6ECA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DEE72AFA57FC002F6ECA /* APIManager.swift */; };
+		9295DEEA2AFA57FD002F6ECA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DEE82AFA57FC002F6ECA /* APIService.swift */; };
+		9295DEEC2AFA5812002F6ECA /* ProductListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DEEB2AFA5812002F6ECA /* ProductListView.swift */; };
+		9295DEEE2AFA584F002F6ECA /* ProductListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DEED2AFA584F002F6ECA /* ProductListViewModel.swift */; };
+		9295DEF02AFA5880002F6ECA /* ProductListServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DEEF2AFA5880002F6ECA /* ProductListServices.swift */; };
+		9295DEF22AFA58B1002F6ECA /* ProductListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DEF12AFA58B1002F6ECA /* ProductListing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,14 @@
 		9295DED32AFA1780002F6ECA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9295DED52AFA1785002F6ECA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9295DED82AFA1785002F6ECA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9295DEDF2AFA17B3002F6ECA /* PublisherSubscriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherSubscriber.swift; sourceTree = "<group>"; };
+		9295DEE72AFA57FC002F6ECA /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		9295DEE82AFA57FC002F6ECA /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		9295DEEB2AFA5812002F6ECA /* ProductListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListView.swift; sourceTree = "<group>"; };
+		9295DEED2AFA584F002F6ECA /* ProductListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewModel.swift; sourceTree = "<group>"; };
+		9295DEEF2AFA5880002F6ECA /* ProductListServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListServices.swift; sourceTree = "<group>"; };
+		9295DEF12AFA58B1002F6ECA /* ProductListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListing.swift; sourceTree = "<group>"; };
+		9295DEF72AFA5DDD002F6ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +66,11 @@
 		9295DED02AFA1780002F6ECA /* CombineFramework */ = {
 			isa = PBXGroup;
 			children = (
+				9295DEF72AFA5DDD002F6ECA /* Info.plist */,
 				9295DED12AFA1780002F6ECA /* CombineFrameworkApp.swift */,
 				9295DED32AFA1780002F6ECA /* ContentView.swift */,
+				9295DEDF2AFA17B3002F6ECA /* PublisherSubscriber.swift */,
+				9295DEE62AFA5775002F6ECA /* API Call */,
 				9295DED52AFA1785002F6ECA /* Assets.xcassets */,
 				9295DED72AFA1785002F6ECA /* Preview Content */,
 			);
@@ -65,6 +83,19 @@
 				9295DED82AFA1785002F6ECA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9295DEE62AFA5775002F6ECA /* API Call */ = {
+			isa = PBXGroup;
+			children = (
+				9295DEE72AFA57FC002F6ECA /* APIManager.swift */,
+				9295DEE82AFA57FC002F6ECA /* APIService.swift */,
+				9295DEEB2AFA5812002F6ECA /* ProductListView.swift */,
+				9295DEED2AFA584F002F6ECA /* ProductListViewModel.swift */,
+				9295DEEF2AFA5880002F6ECA /* ProductListServices.swift */,
+				9295DEF12AFA58B1002F6ECA /* ProductListing.swift */,
+			);
+			path = "API Call";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +168,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9295DEF22AFA58B1002F6ECA /* ProductListing.swift in Sources */,
+				9295DEE92AFA57FD002F6ECA /* APIManager.swift in Sources */,
+				9295DEEC2AFA5812002F6ECA /* ProductListView.swift in Sources */,
+				9295DEEA2AFA57FD002F6ECA /* APIService.swift in Sources */,
+				9295DEEE2AFA584F002F6ECA /* ProductListViewModel.swift in Sources */,
 				9295DED42AFA1780002F6ECA /* ContentView.swift in Sources */,
+				9295DEF02AFA5880002F6ECA /* ProductListServices.swift in Sources */,
 				9295DED22AFA1780002F6ECA /* CombineFrameworkApp.swift in Sources */,
+				9295DEE02AFA17B3002F6ECA /* PublisherSubscriber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +308,7 @@
 				DEVELOPMENT_TEAM = JDQM4MDQ97;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CombineFramework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +338,7 @@
 				DEVELOPMENT_TEAM = JDQM4MDQ97;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CombineFramework/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

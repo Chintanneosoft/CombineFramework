@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		924322662AFB90DE00D6BF96 /* SubjectPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924322652AFB90DE00D6BF96 /* SubjectPublisher.swift */; };
+		9243226A2AFB9A4200D6BF96 /* SenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924322692AFB9A4200D6BF96 /* SenderView.swift */; };
+		9243226C2AFB9A5C00D6BF96 /* SubjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243226B2AFB9A5C00D6BF96 /* SubjectModel.swift */; };
+		9243226E2AFB9A9000D6BF96 /* ReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9243226D2AFB9A9000D6BF96 /* ReceiverView.swift */; };
 		9295DED22AFA1780002F6ECA /* CombineFrameworkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DED12AFA1780002F6ECA /* CombineFrameworkApp.swift */; };
 		9295DED42AFA1780002F6ECA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9295DED32AFA1780002F6ECA /* ContentView.swift */; };
 		9295DED62AFA1785002F6ECA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9295DED52AFA1785002F6ECA /* Assets.xcassets */; };
@@ -21,6 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		924322652AFB90DE00D6BF96 /* SubjectPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectPublisher.swift; sourceTree = "<group>"; };
+		924322692AFB9A4200D6BF96 /* SenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderView.swift; sourceTree = "<group>"; };
+		9243226B2AFB9A5C00D6BF96 /* SubjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectModel.swift; sourceTree = "<group>"; };
+		9243226D2AFB9A9000D6BF96 /* ReceiverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverView.swift; sourceTree = "<group>"; };
 		9295DECE2AFA1780002F6ECA /* CombineFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CombineFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9295DED12AFA1780002F6ECA /* CombineFrameworkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineFrameworkApp.swift; sourceTree = "<group>"; };
 		9295DED32AFA1780002F6ECA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,6 +55,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		924322642AFB90BC00D6BF96 /* Subject */ = {
+			isa = PBXGroup;
+			children = (
+				924322652AFB90DE00D6BF96 /* SubjectPublisher.swift */,
+				924322692AFB9A4200D6BF96 /* SenderView.swift */,
+				9243226B2AFB9A5C00D6BF96 /* SubjectModel.swift */,
+				9243226D2AFB9A9000D6BF96 /* ReceiverView.swift */,
+			);
+			path = Subject;
+			sourceTree = "<group>";
+		};
 		9295DEC52AFA1780002F6ECA = {
 			isa = PBXGroup;
 			children = (
@@ -68,6 +87,7 @@
 			children = (
 				9295DEF72AFA5DDD002F6ECA /* Info.plist */,
 				9295DED12AFA1780002F6ECA /* CombineFrameworkApp.swift */,
+				924322642AFB90BC00D6BF96 /* Subject */,
 				9295DED32AFA1780002F6ECA /* ContentView.swift */,
 				9295DEDF2AFA17B3002F6ECA /* PublisherSubscriber.swift */,
 				9295DEE62AFA5775002F6ECA /* API Call */,
@@ -169,13 +189,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				9295DEF22AFA58B1002F6ECA /* ProductListing.swift in Sources */,
+				924322662AFB90DE00D6BF96 /* SubjectPublisher.swift in Sources */,
+				9243226C2AFB9A5C00D6BF96 /* SubjectModel.swift in Sources */,
 				9295DEE92AFA57FD002F6ECA /* APIManager.swift in Sources */,
 				9295DEEC2AFA5812002F6ECA /* ProductListView.swift in Sources */,
 				9295DEEA2AFA57FD002F6ECA /* APIService.swift in Sources */,
 				9295DEEE2AFA584F002F6ECA /* ProductListViewModel.swift in Sources */,
 				9295DED42AFA1780002F6ECA /* ContentView.swift in Sources */,
+				9243226E2AFB9A9000D6BF96 /* ReceiverView.swift in Sources */,
 				9295DEF02AFA5880002F6ECA /* ProductListServices.swift in Sources */,
 				9295DED22AFA1780002F6ECA /* CombineFrameworkApp.swift in Sources */,
+				9243226A2AFB9A4200D6BF96 /* SenderView.swift in Sources */,
 				9295DEE02AFA17B3002F6ECA /* PublisherSubscriber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

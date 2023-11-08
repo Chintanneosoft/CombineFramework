@@ -28,10 +28,10 @@ struct ContentView: View {
                             .cornerRadius(10)
                     }
                 }
-                .navigationTitle("Future API Call")
                 .padding()
                 
                 PublisherSubscriberView()
+                SubjectPublisher()
             }
         }
         .environmentObject(viewModel)

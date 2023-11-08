@@ -33,7 +33,7 @@ struct ProductListView: View {
                         Text("Rs: \(product.cost ?? 0)")
                             .font(.title3)
                             .foregroundColor(.red)
-                            .padding(.vertical,5)
+                            .padding(.vertical,2)
                     }
                     .padding(.horizontal)
                 }
@@ -42,6 +42,7 @@ struct ProductListView: View {
                   }
             }
         }
+        .navigationTitle("Future API Call")
         
     }
 }

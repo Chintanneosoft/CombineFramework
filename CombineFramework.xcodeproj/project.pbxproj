@@ -66,6 +66,14 @@
 			path = Subject;
 			sourceTree = "<group>";
 		};
+		928F9AA92AFCE79700BA49CA /* PublisherSubscriber */ = {
+			isa = PBXGroup;
+			children = (
+				9295DEDF2AFA17B3002F6ECA /* PublisherSubscriber.swift */,
+			);
+			path = PublisherSubscriber;
+			sourceTree = "<group>";
+		};
 		9295DEC52AFA1780002F6ECA = {
 			isa = PBXGroup;
 			children = (
@@ -87,10 +95,10 @@
 			children = (
 				9295DEF72AFA5DDD002F6ECA /* Info.plist */,
 				9295DED12AFA1780002F6ECA /* CombineFrameworkApp.swift */,
-				924322642AFB90BC00D6BF96 /* Subject */,
 				9295DED32AFA1780002F6ECA /* ContentView.swift */,
-				9295DEDF2AFA17B3002F6ECA /* PublisherSubscriber.swift */,
+				928F9AA92AFCE79700BA49CA /* PublisherSubscriber */,
 				9295DEE62AFA5775002F6ECA /* API Call */,
+				924322642AFB90BC00D6BF96 /* Subject */,
 				9295DED52AFA1785002F6ECA /* Assets.xcassets */,
 				9295DED72AFA1785002F6ECA /* Preview Content */,
 			);

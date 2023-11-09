@@ -13,14 +13,16 @@ struct ContentView: View {
     @ObservedObject var viewModel = ProductListViewModel()
     
     var body: some View {
+        
         NavigationView {
+            
             VStack {
                 NavigationLink(destination: ProductListView(), isActive: $viewModel.isNavigating) {
                     Button(action: {
                     viewModel.getDataFromViewModel()
                     }) {
                         Text("API CALL")
-                            .foregroundColor(Color.pink)
+                            .foregroundColor(Color.red)
                             .padding(15)
                             .background(.black)
                             .font(.system(size: 20))
@@ -30,13 +32,31 @@ struct ContentView: View {
                 }
                 .padding()
                 
-                PublisherSubscriberView()
-                SubjectPublisher()
+                NavigationLink(destination: PublisherSubscriberView()){
+                        Text("Publisher Subscriber View")
+                            .foregroundColor(Color.red)
+                            .padding(15)
+                            .background(.black)
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                            .cornerRadius(10)
+                }
+                .padding()
+                
+                NavigationLink(destination: SubjectPublisher()){
+                        Text("Subject Publisher")
+                            .foregroundColor(Color.red)
+                            .padding(15)
+                            .background(.black)
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                            .cornerRadius(10)
+                }
+                .padding()
             }
         }
         .environmentObject(viewModel)
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

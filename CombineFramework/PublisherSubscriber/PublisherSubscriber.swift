@@ -116,7 +116,7 @@ struct PublisherSubscriberView: View {
                 }
                 
                 Button(action: {
-                    ps.num += 3
+                    ps.num += 1
                 }) {
                     Text("Update Just num:\(ps5)")
                         .foregroundColor(Color.cyan)

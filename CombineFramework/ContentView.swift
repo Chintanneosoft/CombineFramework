@@ -53,6 +53,17 @@ struct ContentView: View {
                             .cornerRadius(10)
                 }
                 .padding()
+                
+                NavigationLink(destination: SchedulerView()){
+                        Text("Scheduler")
+                            .foregroundColor(Color.red)
+                            .padding(15)
+                            .background(.black)
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                            .cornerRadius(10)
+                }
+                .padding()
             }
         }
         .environmentObject(viewModel)
